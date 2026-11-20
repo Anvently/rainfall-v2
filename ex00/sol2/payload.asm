@@ -14,5 +14,5 @@ _start:
     xor rsi, rsi                    ; argv = NULL
     xor rdx, rdx                    ; envp = NULL
 
-    mov rax, 0x3b                   ; syscall execve = 59
+    mov al, 0x3b                   ; syscall execve = 59
     syscall
