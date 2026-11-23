@@ -99,7 +99,9 @@ This exploit attempt uses this exec wrapper (making sure the original `store_rec
 (gdb) set exec-wrapper env -i A="B" ./dixie
 ```
 
-#### Shellcode in an environment variable
+### Shellcode in an environment variable
+
+![alt text](resources/level02-with-env.drawio.png)
 
 Let's replicate the method from ex00 of storing the payload directly inside an environment variable.
 
