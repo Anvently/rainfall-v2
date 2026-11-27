@@ -1,0 +1,10 @@
+input = 0x2437252070243625.to_bytes(8, 'little')
+input += 0x2520702438252070.to_bytes(8, 'little')
+input += 0x2430312520702439.to_bytes(8, 'little')
+input += 0x2070243131252070.to_bytes(8, 'little')
+input += 0x3125207024323125.to_bytes(8, 'little')
+input += 0x2434312520702433.to_bytes(8, 'little')
+input += 0x2070243531252070.to_bytes(8, 'little')
+input += 0x25207024363125.to_bytes(8, 'little')
+
+print(input.decode('ascii'))
